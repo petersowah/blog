@@ -9,7 +9,7 @@
 title: "Peter Sowah"
 
 # A description of your site for social meta tag, search engines, and feed.xml
-description: "My personal blog where I write about programming topics - PHP, Ruby, JavaScript and some DevOps & Databases. &#128526"
+description: "My personal blog where I write about programming topics - PHP, Ruby, JavaScript, some DevOps & Databases. &#128526"
 
 # The subpath of your site, e.g. /blog, for generating urls
 baseurl:
@@ -29,7 +29,7 @@ navigation:
 #  url: https://github.com/JustGoodThemes/Scriptor-Jekyll-Theme
 
 # The shortname for your Disqus site to enable comments.
-disqus: peter_sowah
+disqus: petersowah-dev
 
 # Author information - author info at the bottom of the post
 author_name: "Peter Sowah"
