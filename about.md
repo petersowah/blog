@@ -1,16 +1,22 @@
 ---
 layout: page
-title: About this blog
+title: About Me
 description: An optional about page for BlogInn Jekyll theme
-banner_image: /assets/images/aboutPage.jpg
+banner_image: /assets/images/me.jpg
 ---
+Akwaaba! I am Peter Sowah, a developer at [expressPay](https://expresspaygh.com){:target="_blank"}.
+ 
+I live in Accra, Ghana and I am very passionate about programming. I mainly program in PHP and JavaScript. I am a Laravel enthusiast and have used it to build a number of projects. I also love playing video games - some of my favourite games include COD, Battlefield, FIFA, Red Dead Redemption, just to mention a few. Genres of music I enjoy include Jazz, Trap, EDM and some classic old school Hip-Hop.
 
-**John Doe** is a Senior Art Director from [Vilnius](https://en.wikipedia.org/wiki/Vilnius), Lithuania. After graduating from The College of Visual Arts with a degree in Communication Design, he worked for three small graphic design shops where he honed his design style and sensibility.
+With this blog, I hope to share with you my thoughts and knowledge I have gathered in my programming journey and basically everything about me.
 
-His work has been recognized by Communication Arts, Print, How, ID, IdN, AIGA, Effie, Archive, Graphis, AdFed and Rockport. Graphic Design USA named him a person to watch in 2015.
+### Work
+[expressPay](https://expresspaygh.com){:target="_blank"} is Ghana's first payment platform that actually works. At expressPay, we serve as that single platform or medium through which you can send and receive money from a variety of options(Mobile Money, Card Payments) as well as pay for services such electricity, water, internet...you name it.
 
->The world always seems brighter when you’ve just made something that wasn’t there before. <cite>Neil Gaiman</cite>
+### Community
+I recently teamed up with the [forloop Ghana](https://forloop.africa){:target="_blank"} where I help organise meetups and hackathons for up and coming developers. Due to my introvert nature, I haven't given any talks yet. I have intentions of doing so very soon.
 
-As a hobby, John Doe authors the most influential design blog in Lithuania with over 100,000 page views a month. He lives in Vilnius with his beautiful wife, two boys and one girl.
-
-*Thank You for reading!*
+I love meeting new people or making new friends so feel free to _holla_ at me on:
+* [twitter](https://twitter.com/petersowah_){:target="_blank"}
+* [instagram](https://petersowah.com){:target="_blank"}
+* [github](https://github.com/petersowah){:target="_blank"}
