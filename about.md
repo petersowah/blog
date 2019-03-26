@@ -14,7 +14,7 @@ With this blog, I hope to share with you my thoughts and knowledge I have gather
 [expressPay](https://expresspaygh.com){:target="_blank"} is Ghana's first payment platform that actually works. At expressPay, we serve as that single platform or medium through which you can send and receive money from a variety of options(Mobile Money, Card Payments) as well as pay for services such electricity, water, internet...you name it.
 
 ### Community
-I recently teamed up with the [forloop Ghana](https://forloop.africa){:target="_blank"} where I help organise meetups and hackathons for up and coming developers. Due to my introvert nature, I haven't given any talks yet. I have intentions of doing so very soon.
+I recently teamed up with the [forloop Ghana](https://forloop.africa){:target="_blank"} through my colleague at work- [Ore Ogundipe](https://orecod.es){:target="_blank"}. At *forloop*, I help organise meetups and hackathons for up coming developers(first event in a couple of weeks -*super excited*). Due to my introvert nature, I haven't given any talks yet. I however have intentions of doing so very soon.
 
 I love meeting new people or making new friends so feel free to _holla_ at me on:
 * [twitter](https://twitter.com/petersowah_){:target="_blank"}
