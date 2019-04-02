@@ -14,11 +14,16 @@
     <!-- Site Favicon -->
     <link rel="shortcut icon" href="{{ site.url }}/{{ site.baseurl }}{{ site.favicon }}" type="image/png" />
 
+    <!-- Apple Web App -->
+    <link rel="apple-touch-icon" href="{{ site.url }}/{{ site.baseurl }}apple-touch-icon" />
+
     <!-- Font Embed Code -->
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Droid+Serif:400,400italic,700,700italic%7CLato:400,400italic,700,700italic" />
 
     <!-- CSS Styles -->
     <link href="{{ site.baseurl }}/assets/css/style.css" rel="stylesheet">
+
+    {% include og.html %}
 </head>
 <body>
     <div id="page" class="site inner">
