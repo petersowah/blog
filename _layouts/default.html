@@ -23,6 +23,17 @@
     <!-- CSS Styles -->
     <link href="{{ site.baseurl }}/assets/css/style.css" rel="stylesheet">
 
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-87473467-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-87473467-1');
+    </script>
+
+
     {% include og.html %}
 
     {% include twitter-cards.html %}
