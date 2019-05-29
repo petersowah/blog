@@ -315,6 +315,6 @@ In the controller, all methods return data in the JSON format.
 We cab test our API using REST clients(I recommend either [Insomnia](https://insomnia.rest/){:target="_blank"} or [PostMan](https://www.getpostman.com/){:target="_blank"}). Check out various documentations on testing using either tool.
 
 ## Conclusion
-We did it! We successfully wrote a REST API listing characters in Black Panther using Lumen(super-cool micro-framework) and Cloudinary. Lumen is my go-to tool for APIs using PHP. I hope you get to enjoy using it as much as I do. You can find the source for this project on [github](https://github.com/petersowah/black-panther-api):target="_blank"}. Cheers!
+We did it! We successfully wrote a REST API listing characters in Black Panther using Lumen(super-cool micro-framework) and Cloudinary. Lumen is my go-to tool for APIs using PHP. I hope you get to enjoy using it as much as I do. You can find the source for this project on [github](https://github.com/petersowah/black-panther-api){:target="_blank"}. Cheers!
 
 _Please let me know if you have any questions, observations or criticisms in the comment section. Feedback is always welcome._
