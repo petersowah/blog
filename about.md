@@ -1,12 +1,11 @@
 ---
 layout: page
 title: About Me
-description: An optional about page for BlogInn Jekyll theme
+description: Peter Sowah is a programming enthousiast and software developer.
 banner_image: /assets/images/me.jpg
 ---
-Akwaaba! I am Peter Sowah, a developer at [expressPay](https://expresspaygh.com){:target="_blank"}.
  
-I live in Accra, Ghana and I am very passionate about programming. I mainly program in PHP and JavaScript. I am a Laravel enthusiast and have used it to build a number of projects. I also love playing video games - some of my favourite games include COD, Battlefield, FIFA, Red Dead Redemption, just to mention a few. Genres of music I enjoy include Jazz, Trap, EDM and some classic old school Hip-Hop.
+I live in Accra, Ghana and I am very passionate about programming. I mainly program in PHP, Ruby and JavaScript. I am a Laravel enthusiast and have used it to build a number of projects. I also love playing video games - some of my favourite games include COD, Battlefield, FIFA, Red Dead Redemption, just to mention a few. Genres of music I enjoy include Jazz, Trap, EDM and some classic old school Hip-Hop.
 
 With this blog, I hope to share with you my thoughts and knowledge I have gathered in my programming journey and basically everything about me.
 
