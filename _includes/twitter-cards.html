@@ -2,14 +2,14 @@
 <meta name="twitter:site"    content="@petersowah_">
 <meta name="twitter:creator" content="@petersowah_">
 
-{% if page.summary %}
+{% if page.title %}
 <meta name="twitter:title"   content="{{ page.title }}">
 {% else %}
 <meta name="twitter:title"   content="{{ site.title }}">
 {% endif %}
 
-{% if page.summary %}
-<meta name="twitter:description" content="{{ page.summary }}">
+{% if page.description %}
+<meta name="twitter:description" content="{{ page.description }}">
 {% else %}
 <meta name="twitter:description" content="{{ site.description }}">
 {% endif %}
