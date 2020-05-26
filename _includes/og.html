@@ -22,10 +22,10 @@
 <meta content="{{ page.date | date_to_xmlschema }}" property="article:published_time">
 <meta content="{{ site.url }}/about/" property="article:author">
 {% endif %}
-{% if page.featured-image %}
-<meta content="{{ site.url }}/{{ page.featured-image }}" property="og:image">
+{% if page.feature_image %}
+<meta content="{{ site.url }}/{{ page.feature_image }}" property="og:image">
 {% else %}
-<meta content="{{ site.url }}/assets/images/medium-images/main-site-image.jpg" property="og:image">
+<meta content="{{ site.url }}/images/me.jpg" property="og:image">
 {% endif %}
 {% if page.categories %}
 {% for category in page.categories limit:1 %}
