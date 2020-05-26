@@ -4,7 +4,7 @@ title:  "Black Panther REST API with Lumen and Cloudinary"
 date: 2018-02-23
 tags: [lumen, php, api, cloudinary]
 ---
-{% include image_full.html imageurl="/assets/images/posts/2018/black-panther.jpeg" title="Black Panther Banner" caption="Black Panther Banner" %}
+{% include image_full.html imageurl="/images/posts/2018/black-panther.jpeg" title="Black Panther Banner" caption="Black Panther Banner" %}
 
 About a week ago(15th February, 2018), the first Black Panther movie was premiered in cinemas around the world. Woop! Woop! I am a huge Marvels movies(and some Sci-fi) and a keen follower of the MCU(Marvel Cinematic Universe). Let’s go ahead and write an API that returns data on Black Panther characters. Let’s make Shuri proud! Don’t Freeze! 😃
 <!--more-->
@@ -40,21 +40,21 @@ This serves our application. We can access it by going to http://localhost:8000 
 ## Getting Our Hands Dirty
 
 Great! So far so good. (This is where you take a sip from your cup of coffee). We are going to leverage on [Eloquent](https://laravel.com/docs/5.6/eloquent) - Laravel’s sassy ORM and Facades(understand the Facade Design Pattern [here](https://www.sitepoint.com/how-laravel-facades-work-and-how-to-use-them-elsewhere/)). These are ‘deactivated’ by default in Lumen. We ‘activate’ them by uncommenting two lines of code in the bootstrap/app.php file on lines 26 and 28 so we have;
-{% highlight php%}
+```php
 $app->withFacades();
 
 $app->withEloquent();
-{% endhighlight %}
+```
 
 Let’s change the text returned on hitting the base url(http://localhost:8000) of our application. Open the file web.php in the routes folder. Delete the line that has
-{% highlight php%}
+```php
 return $router->app->version();
-{% endhighlight %}
+```
 
 replace with;
-{% highlight php%}
+```php
 return 'Black Panther API v1.0.0 - Wakanda Forever!';
-{% endhighlight %}
+```
 
 Save the file and refresh or load http://localhost:8000 to see changes take effect.
 
@@ -73,7 +73,7 @@ Let’s create our migration file to create the Characters table:
 This command creates a file in the **_database/migrations_** directory. All migrations are timestamped and this is how the application keeps track of migrations in order. In my case, **_2018_01_24_133302_create_characters_table.php_**. We open this file in our favorite IDE and then add the attributes of Black Panther characters in there. We want our characters to have the following attributes: id, uuid, name, alias, occupation, gender, place of birth, bio, abilities, played by, image_path which will create corresponding columns in our database.
 
 Our migration file with the above attributes will look like this:  
-{% highlight php%}
+```php
 <?php
 
 use Illuminate\Support\Facades\Schema;
@@ -114,17 +114,17 @@ class CreateCharactersTable extends Migration
         Schema::dropIfExists('characters');
     }
 }
-{% endhighlight %}
+```
 
 We then run our migration;  
-{% highlight php%}
+```php
 php artisan migrate
-{% endhighlight %}
+```
 
 This creates a characters table together with the columns defined in our database. We should have two tables in our database now; **characters** and **migrations**.
 
 Next step is the creation of the model. Create the **app/Character.php** file and add the following code:
-{% highlight php %}
+```php
 <?php
 
 namespace App;
@@ -151,7 +151,7 @@ class Character extends Model
     */
    protected $hidden = ['id'];
 }
-{% endhighlight %}
+```
 
 In the above code, we have made the **id** attribute hidden from the JSON responses returned. You can read on mass assignment here.
 
@@ -159,34 +159,34 @@ In the above code, we have made the **id** attribute hidden from the JSON respon
 Cloudinary is the media management platform for web and mobile developers. It enables users to upload, store, manage, manipulate and deliver images and video for websites and apps, with the goal of improving performance.
 
 Head over to [Cloudinary](https://cloudinary.com/), to sign up for an account. If you already have an account, just sign in. Once done, you get presented with a dashboard like this;
-{% include image_caption.html imageurl="/assets/images/posts/2018/cloudinary-dashboard.png" title="Cloudinary Dashboard" caption="Cloudinary Dashboard" %}
+{% include image_caption.html imageurl="/images/posts/2018/cloudinary-dashboard.png" title="Cloudinary Dashboard" caption="Cloudinary Dashboard" %}
 
 
 From the dashboard, we are able to see our account details. We are going to need the Cloudinary cloud name, API Key and API secret. These values will be stored in the .env file in the root of the project. Replace ‘****’ with the corresponding values from your Cloudinary dashboard from below.
 
-{% highlight php%}
+```php
 CLOUDINARY_API_KEY=******************
 CLOUDINARY_API_SECRET=******************
 CLOUDINARY_CLOUD_NAME=******************
-{% endhighlight %}
+```
 
 Let’s pull in the Cloudinary package from [packagist](https://packagist.org){:target="_blank"}. We search for Cloudinary and click on cloudinary/cloudinary_php from the list of results. We run the following command pull in the Cloudinary package into our project through Composer.
-{% highlight php%}
+```php
 composer require cloudinary/cloudinary_php
-{% endhighlight %}
+```
 
 To set Cloudinary configuration values at runtime, we pass an array to the config method in the Cloudinary class. We do this in the bootstrap/app.php file. See below.
-{% highlight php%}
+```php
 Cloudinary::config(array(
    'cloud_name' => env('CLOUDINARY_CLOUD_NAME', true),
    'api_key' => env('CLOUDINARY_API_KEY', true),
    'api_secret' => env('CLOUDINARY_API_SECRET', true)
 ));
-{% endhighlight %}
+```
 
 ## Routing — The Border Tribe
 You will define all of the routes for your application in the `routes/web.php` file. Open this file in your IDE and the code below.
-{% highlight php%}
+```php
 <?php
 
 /*
@@ -211,7 +211,7 @@ $router->group(['prefix' => 'api/v1'], function() use ($router){
    $router->put('characters/{uuid}', 'CharacterController@update');
    $router->delete('characters/{uuid}', 'CharacterController@destroy');
 });
-{% endhighlight %}
+```
 
 From the code in the **web.php** file, we leverage on [routes](https://lumen.laravel.com/docs/5.6/routing){:target="_blank"} and the **CharacterController**(which we will create next). Route groups allow us to share route attributes, such as middleware or namespaces, across a large number of routes without needing to define those attributes on each individual route. Find out more on routes [here](https://lumen.laravel.com/docs/5.6/routing){:target="_blank"}.
 
@@ -219,7 +219,7 @@ From the code in the **web.php** file, we leverage on [routes](https://lumen.lar
 Instead of defining all of your request handling logic in a single `routes.php` file, you may wish to organize this behavior using Controller classes. Controllers can group related HTTP request handling logic into a class. Controllers are stored in the `app/Http/Controllers` directory.
 
 We create our controller, CharacterController in `app/Http/Controllers`. We then add the following code:
-{% highlight php%}
+```php
 <?php
 
 namespace App\Http\Controllers;
@@ -289,7 +289,7 @@ class CharacterController extends Controller
       return response('Character Squashed', 200);
    }
 }
-{% endhighlight %}
+```
 
 These methods list, create, show, update and destroy/delete a resource.
 
@@ -304,10 +304,10 @@ These methods list, create, show, update and destroy/delete a resource.
 + The **destroy** method also checks if a specified resource characters resource exists and then deletes it from the database. This method handles a DELETE request to the characters endpoint with a character resource specified.
 
 We realize from our routes file(web.php), that the HTTP request being sent to a particular endpoint, determines which controller action/method is invoked. Looking through the code, we import or require the Character model and the UUID class via:  
-{% highlight php%}
+```php
 use App\Author;
 use Ramsey\Uuid\Uuid;
-{% endhighlight %}
+```
 
 In the controller, all methods return data in the JSON format.
 

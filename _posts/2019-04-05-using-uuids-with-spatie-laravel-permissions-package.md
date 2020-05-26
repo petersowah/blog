@@ -1,8 +1,9 @@
 ---
 layout: post
 title:  "Using UUIDs with Spatie Laravel Permission Package"
+description: "A blog post on using Spatie's Roles and Permissions library with UUID primary keys"
 date: 2019-04-05
-banner_image: /assets/images/posts/2019/laravel-uuid.jpeg 
+feature_image: /images/posts/2019/laravel-uuid.jpeg 
 tags: [laravel, php]
 ---
 

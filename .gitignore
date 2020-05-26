@@ -4,3 +4,6 @@ _drafts
 *.swp
 .sass-cache
 .idea
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadat
