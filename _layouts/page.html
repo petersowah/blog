@@ -2,18 +2,22 @@
 layout: default
 ---
 
-<main class="main-content fadeInDown delay_075s">
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">{{page.title}}</h1>
-      {% if page.feature_image and page.feature_image != "" %}
-      <figure class="post-thumbnail image-card width-wide">
-        <img src="{{ page.feature_image | relative_url }}" alt="{{ page.title }}">
-      </figure><!-- .post-thumbnail -->
-      {% endif %}
-    </header><!-- .post-header -->
-    <div class="post-content">
-      {{content}}
-    </div><!-- .post-content -->
-  </article><!-- .post -->
-</main><!-- .site-main -->
+<section class="page-head">
+  <div class="shell page-head__grid">
+    <div>
+      <h1 class="page-head__title rise d1">{{ page.title }}</h1>
+      {%- if page.lede %}<p class="page-head__lede rise d2">{{ page.lede }}</p>{%- endif %}
+    </div>
+    {%- if page.glyph %}
+    <div class="page-head__sigil rise d2">
+      {% include glyph.html name=page.glyph class="sigil__art glyph--round draw" label=page.glyph %}
+    </div>
+    {%- endif %}
+  </div>
+</section>
+
+<div class="shell">
+  <div class="prose" style="padding-block: 3rem;">
+    {{ content }}
+  </div>
+</div>

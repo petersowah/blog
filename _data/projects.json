@@ -1,0 +1,40 @@
+{
+	"repos": [
+		{
+			"name": "laravel-cashier-revenue-cat",
+			"lang": "PHP",
+			"url": "https://github.com/petersowah/laravel-cashier-revenue-cat",
+			"description": "A Laravel Cashier driver for RevenueCat — subscription management, webhook handling, iOS and Android."
+		},
+		{
+			"name": "laravel-buddy",
+			"lang": "PHP",
+			"url": "https://github.com/petersowah/laravel-buddy",
+			"description": "A standalone CLI, built with Laravel Zero, that scaffolds your next Laravel project."
+		},
+		{
+			"name": "laravel-factory-dumps",
+			"lang": "PHP",
+			"url": "https://github.com/petersowah/laravel-factory-dumps",
+			"description": "Export Laravel factory collections to Excel or CSV dumps."
+		},
+		{
+			"name": "laravel-bulk-policies",
+			"lang": "PHP",
+			"url": "https://github.com/petersowah/laravel-bulk-policies",
+			"description": "Generate policies for every existing model in one pass."
+		},
+		{
+			"name": "factory-dumps",
+			"lang": "Ruby",
+			"url": "https://github.com/petersowah/factory-dumps",
+			"description": "The same idea as a Ruby gem: export FactoryBot data to CSV or Excel."
+		},
+		{
+			"name": "cal_com",
+			"lang": "Ruby",
+			"url": "https://github.com/petersowah/cal_com",
+			"description": "A Ruby library for integrating with the Cal.com API."
+		}
+	]
+}

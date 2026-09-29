@@ -1,0 +1,44 @@
+---
+layout: default
+---
+
+<section class="page-head">
+  <div class="shell page-head__grid">
+    <div>
+      <h1 class="page-head__title rise d1">{{ page.title }}</h1>
+      {%- if page.lede %}<p class="page-head__lede rise d2">{{ page.lede }}</p>{%- endif %}
+    </div>
+    <figure class="page-head__sigil rise d2">
+      {% include glyph.html name="fihankra" class="sigil__art glyph--round draw" label="Fihankra, the enclosed house" %}
+      <figcaption>
+        <p class="sigil__name">Fihankra</p>
+        <p class="sigil__gloss">“The enclosed house.” A compound with one entrance — safety, and everything that belongs together kept together.</p>
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
+<div class="shell about">
+  <aside class="about__aside">
+    <img class="portrait" src="{{ site.data.author.image | relative_url }}" alt="{{ site.data.author.name }}" width="640" height="800">
+    <dl class="facts">
+      <div><dt>Based in</dt><dd>{{ site.data.author.location }}</dd></div>
+      <div><dt>Role</dt><dd>{{ site.data.author.role }}</dd></div>
+      <div><dt>Company</dt><dd><a href="{{ site.data.author.company_url }}" target="_blank" rel="noopener">{{ site.data.author.company }}</a></dd></div>
+      <div><dt>Previously</dt><dd><a href="{{ site.data.author.previous_url }}" target="_blank" rel="noopener">{{ site.data.author.previous }}</a></dd></div>
+      <div><dt>Community</dt><dd>{% if site.data.author.community_url != "" %}<a href="{{ site.data.author.community_url }}" target="_blank" rel="noopener">{{ site.data.author.community }}</a>{% else %}{{ site.data.author.community }}{% endif %}</dd></div>
+      {%- if site.posts.size > 0 %}
+      <div><dt>Writes since</dt><dd>{{ site.posts.last.date | date: "%Y" }}</dd></div>
+      {%- endif %}
+    </dl>
+  </aside>
+
+  <div class="about__body">
+    <div class="prose">
+      {{ content }}
+    </div>
+
+    <h2 class="footer-col__head" style="margin-top:3rem;padding-top:1.25rem;border-top:1px solid var(--line);">Say hello</h2>
+    {% include social.html %}
+  </div>
+</div>

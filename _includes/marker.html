@@ -1,0 +1,5 @@
+<div class="marker">
+  {% include glyph.html name=include.name class="marker__glyph glyph--round" label=include.gloss %}
+  <span class="marker__label">{{ include.label }}</span>
+  <span class="marker__gloss">{{ include.name | capitalize }}: {{ include.gloss }}</span>
+</div>
