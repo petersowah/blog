@@ -2,50 +2,119 @@
 layout: default
 ---
 
-<main class="main-content fadeInDown delay_075s">
+<section class="hero">
+  <div class="shell hero__grid">
+    <div>
+      <p class="hero__eyebrow rise d1"><span class="dot"></span> {{ site.data.author.location }} — {{ 'now' | date: "%Y" }}</p>
 
-  {% for post in paginator.posts %}
-  <article class="post">
-    <header class="post-header">
-      <time class="post-date" datetime="{{ post.date | date: "%Y-%m-%d" }}">{{post.date | date: "%B %-d, %Y" }}</time>
-      <h2 class="post-title"><a href="{{ site.baseurl }}{{ post.url }}" rel="bookmark">{{post.title}}</a></h2>
-      <div class="post-meta">
-        By <span class="post-author">{{ site.data.author.name }}</span>{% if post.tags.size > 0 %}<span
-          class="post-tags"> in
-          {% for tag in post.tags %}<a href="{{ site.baseurl }}/tags/#{{ tag | cgi_escape }}" rel="tag">{{ tag }}</a>{% unless forloop.last %}, {% endunless %}{% endfor %}</span>{% endif %}
-      </div><!-- .post-meta -->
-      {% if post.feature_image and post.feature_image != "" %}
-      <figure class="post-thumbnail image-card width-wide">
-        <a href="{{site.baseurl}}{{post.url}}"><img src="{{ post.feature_image | relative_url }}"
-            alt="{{ post.title }}"></a>
-      </figure><!-- .post-thumbnail -->
-      {% endif %}
-    </header><!-- .post-header -->
-    <div class="post-content">
-      {% if post.content contains '<!--more-->' %}
-      {{ post.content | split:'<!--more-->' | first }}
-      <p class="read-more"><a href="{{ site.baseurl }}{{ post.url }}" class="read-more-link">Continue reading &rarr;</a>
+      <h1 class="hero__name rise d2">Peter<span class="thin">Sowah</span></h1>
+
+      <p class="hero__lede rise d3">
+        CTO at
+        <a href="{{ site.data.author.company_url }}" target="_blank" rel="noopener">{{ site.data.author.company }}</a>.
+        I build the systems behind trip planning across Africa, and write about the
+        <em>APIs, schemas and deploys</em> underneath them.
       </p>
-      {% else %}
-      {{ post.content }}
-      {% endif %}
-    </div><!-- .post-content -->
-  </article><!-- .post -->
-  {% endfor %}
 
-  {% if paginator.total_pages > 1 %}
-  <nav class="pagination">
-    <h2 class="screen-reader-text">Posts navigation</h2>
-    <div class="nav-links">
-      {% if paginator.previous_page %}
-      <a href="{{ paginator.previous_page_path | relative_url }}" class="newer-posts">&larr; Newer Posts</a>
-      {% endif %}
-      <span class="page-number">Page {{ paginator.page }} of {{ paginator.total_pages }}</span>
-      {% if paginator.next_page %}
-      <a href="{{ paginator.next_page_path | relative_url }}" class="older-posts">Older Posts &rarr;</a>
-      {% endif %}
+      <ul class="stack rise d4">
+        {%- for tech in site.data.author.stack %}
+        <li{% if tech == 'PHP' or tech == 'Laravel' %} class="is-key"{% endif %}>{{ tech }}</li>
+        {%- endfor %}
+      </ul>
     </div>
-  </nav><!-- .pagination -->
-  {% endif %}
 
-</main><!-- .site-main -->
+    <figure class="hero__sigil rise d3">
+      {% include glyph.html name="nkyinkyim" class="sigil__art glyph--round draw" label="Nkyinkyim, the twisting line" %}
+      <figcaption>
+        <p class="sigil__name">Nkyinkyim</p>
+        <p class="sigil__gloss">“The twisting line.” Initiative, versatility, a path that changes shape without losing direction.</p>
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="section">
+  <div class="shell">
+    <div class="section__head">
+      {% include marker.html name="nkyimu" label="Writing" gloss="the stamping grid — skill and precision" %}
+      {%- if site.posts.size > 0 %}
+      <p class="section__count">{{ site.posts | size }} {% if site.posts.size == 1 %}post{% else %}posts{% endif %}</p>
+      {%- endif %}
+    </div>
+
+    {%- if site.posts.size == 0 %}
+    <div class="empty">
+      <p class="empty__title">Nothing published right now.</p>
+      <p class="empty__text">New writing is on the way. The <a href="{{ '/feed.xml' | relative_url }}">RSS feed</a> will carry it first.</p>
+    </div>
+    {%- else %}
+    <ul class="index">
+      {%- for post in paginator.posts %}
+      <li class="entry">
+        <a class="entry__link" href="{{ post.url | relative_url }}">
+          <time class="entry__date" datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date | date: "%Y.%m.%d" }}</time>
+          <div class="entry__body">
+            <h2 class="entry__title">{{ post.title }}</h2>
+            {%- if post.description %}
+            <p class="entry__excerpt">{{ post.description }}</p>
+            {%- endif %}
+            {%- if post.tags.size > 0 %}
+            <p class="entry__tags">{% for tag in post.tags %}<span>{{ tag }}</span>{% endfor %}</p>
+            {%- endif %}
+          </div>
+          <span class="entry__arrow" aria-hidden="true">&rarr;</span>
+        </a>
+      </li>
+      {%- endfor %}
+    </ul>
+    {%- endif %}
+
+    {%- if paginator.total_pages > 1 %}
+    <nav class="pager" aria-label="Posts">
+      {% if paginator.previous_page %}<a href="{{ paginator.previous_page_path | relative_url }}">&larr; Newer</a>{% else %}<span></span>{% endif %}
+      <span class="pager__state">{{ paginator.page }} / {{ paginator.total_pages }}</span>
+      {% if paginator.next_page %}<a href="{{ paginator.next_page_path | relative_url }}">Older &rarr;</a>{% else %}<span></span>{% endif %}
+    </nav>
+    {%- endif %}
+  </div>
+</section>
+
+<section class="section">
+  <div class="shell">
+    <div class="section__head">
+      {% include marker.html name="nkonsonkonson" label="Open source" gloss="the chain link — nothing stands on its own" %}
+      <p class="section__count"><a href="https://github.com/petersowah" target="_blank" rel="noopener">github.com/petersowah</a></p>
+    </div>
+
+    <div class="repos">
+      {%- for repo in site.data.projects.repos %}
+      <a class="repo" href="{{ repo.url }}" target="_blank" rel="noopener">
+        <span class="repo__name">{{ repo.name }}</span>
+        <p class="repo__text">{{ repo.description }}</p>
+        <span class="repo__lang">{{ repo.lang }}</span>
+      </a>
+      {%- endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="shell">
+    <div class="section__head">
+      {% include marker.html name="fihankra" label="Elsewhere" gloss="the enclosed house — where the work lives" %}
+    </div>
+
+    <div class="cards">
+      <a class="card" href="{{ site.data.author.company_url }}" target="_blank" rel="noopener">
+        <span class="card__label">Work</span>
+        <h2 class="card__title">{{ site.data.author.company }}</h2>
+        <p class="card__text">Trip planning and tourism business management for travellers touring Africa. I lead engineering.</p>
+      </a>
+      <div class="card">
+        <span class="card__label">Community</span>
+        <h2 class="card__title">{{ site.data.author.community }}</h2>
+        <p class="card__text">Community work with the GaDangme people of Greater Accra — the language and the culture it carries.</p>
+      </div>
+    </div>
+  </div>
+</section>

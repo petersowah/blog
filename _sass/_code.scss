@@ -1,0 +1,54 @@
+code, pre, kbd, samp { font-family: var(--mono); font-variant-ligatures: none; }
+
+:not(pre) > code {
+  font-size: 0.86em;
+  padding: 0.12em 0.4em;
+  border-radius: 2px;
+  background: var(--gold-soft);
+  color: var(--gold);
+  word-break: break-word;
+}
+
+.prose pre,
+.prose .highlighter-rouge,
+.prose .highlight {
+  max-width: 48rem;
+}
+
+.highlighter-rouge, pre.highlight, div.highlight {
+  margin: 2rem auto;
+}
+
+pre {
+  overflow-x: auto;
+  background: var(--c-bg);
+  color: var(--c-text);
+  border: var(--rule) solid var(--line);
+  border-left: 2px solid var(--gold);
+  border-radius: 0;
+  padding: 1.15rem 1.25rem;
+  font-size: 0.8125rem;
+  line-height: 1.7;
+  tab-size: 2;
+}
+pre code {
+  background: none;
+  color: inherit;
+  padding: 0;
+  font-size: inherit;
+}
+
+.highlight { background: transparent; }
+
+.highlight .c, .highlight .c1, .highlight .cm, .highlight .cs, .highlight .cd { color: var(--c-comment); font-style: italic; }
+.highlight .k, .highlight .kc, .highlight .kd, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kt,
+.highlight .o, .highlight .ow { color: var(--c-key); }
+.highlight .s, .highlight .s1, .highlight .s2, .highlight .sb, .highlight .sc, .highlight .sd,
+.highlight .se, .highlight .sh, .highlight .si, .highlight .sx, .highlight .sr, .highlight .ss { color: var(--c-string); }
+.highlight .nf, .highlight .nc, .highlight .nn, .highlight .nd { color: var(--c-fn); }
+.highlight .m, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .mo, .highlight .il { color: var(--c-num); }
+.highlight .p, .highlight .nt { color: var(--c-punct); }
+.highlight .nv, .highlight .vc, .highlight .vg, .highlight .vi, .highlight .na { color: var(--c-var); }
+.highlight .gd { color: var(--clay); }
+.highlight .gi { color: var(--c-string); }
+.highlight .err { color: var(--clay); }

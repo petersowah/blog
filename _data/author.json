@@ -1,7 +1,31 @@
 {
-	"name": "Peter Sowah",
-	"bio": "Problem Solver, Programmer, Gamer",
-	"url": "https://petersowah.dev",
-	"location": "Accra, Ghana",
-	"image": "images/me.jpg"
+	"name":	"Peter Sowah",
+	"role":	"CTO",
+	"bio":	"CTO at Mizormor in Accra. I build the systems behind trip planning across Africa, and write about the APIs, schemas and deploys underneath them.",
+	"short_bio":	"CTO at Mizormor, building trip-planning infrastructure out of Accra.",
+	"url":	"https://petersowah.dev",
+	"location":	"Accra, Ghana",
+	"image":	"/images/me.jpeg",
+	"company":	"Mizormor",
+	"company_url":	"https://mizormor.com",
+	"company_line":	"Trip planning and tourism business management for travellers touring Africa.",
+	"previous":	"Kwarleyz Group",
+	"previous_url":	"https://kwarleyzgroup.com",
+	"previous_role":	"Lead software engineer",
+	"community":	"GaDangme",
+	"community_url":	"",
+	"stack": [
+ 	"PHP",
+ 	"Laravel",
+ 	"Ruby",
+ 	"TypeScript",
+ 	"Next.js",
+ 	"Python",
+ 	"FastAPI",
+ 	"LangGraph",
+ 	"Postgres",
+ 	"Supabase",
+ 	"Redis",
+ 	"Docker"
+ ]
 }

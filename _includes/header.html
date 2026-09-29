@@ -1,32 +1,27 @@
-<header class="site-header">
-  {% if page.url == "/" %}
-  <h1 class="site-title"><a class="logo-text" href="{{ site.baseurl }}/">{{site.title}}</a></h1>
-  {% else %}
-  <p class="site-title"><a class="logo-text" href="{{ site.baseurl }}/">{{site.title}}</a></p>
-  {% endif %}
-  <nav class="site-navigation">
-    <div class="site-navigation-wrap">
-      <h2 class="screen-reader-text">Main navigation</h2>
-      <ul class="menu">
-        {% for item in site.navigation %}
-        {% assign current = nil %}
-        {% if page.url == item.url %}
-        {% assign current = 'nav-current' %}
-        {% endif %}
-        <li class="menu-item {{ current }}">
-          <a class="{{ current }}" href="{{ item.url }}">{{ item.text }}</a>
-        </li>
-        {% endfor %}
-      </ul><!-- .menu -->
-      <button id="menu-close" class="menu-toggle"><span class="screen-reader-text">Close Menu</span><span
-          class="icon-close" aria-hidden="true"></span></button>
-    </div><!-- .site-navigation-wrap -->
-  </nav><!-- .site-navigation -->
-  <button id="menu-open" class="menu-toggle"><span class="screen-reader-text">Open Menu</span><span class="icon-menu" aria-hidden="true"></span></button>
-</header>
+<header class="masthead">
+  <div class="shell masthead__inner">
+    <a class="brand" href="{{ '/' | relative_url }}">
+      {% include glyph.html name="adinkrahene" class="brand__mark glyph--round" label="Adinkrahene" %}
+      <span class="brand__name">{{ site.title }}</span>
+    </a>
 
-{% if site.description and site.description != "" and page.url == "/" %}
-<div class="site-description fadeInDown delay_05s">
-  <p>{{ site.description }}</p>
-</div><!-- .site-description -->
-{% endif %}
+    <nav class="nav" aria-label="Main">
+      <ul class="nav__list" id="nav-list">
+        {%- for item in site.navigation %}
+        <li>
+          <a class="nav__link" href="{{ item.url | relative_url }}"{% if page.url == item.url %} aria-current="page"{% endif %}>{{ item.text }}</a>
+        </li>
+        {%- endfor %}
+      </ul>
+
+      <button class="icon-btn theme-toggle" id="theme-toggle" type="button" aria-label="Switch colour theme">
+        <svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.2v2.4M12 19.4v2.4M2.2 12h2.4M19.4 12h2.4M5.1 5.1l1.7 1.7M17.2 17.2l1.7 1.7M18.9 5.1l-1.7 1.7M6.8 17.2l-1.7 1.7"/></svg>
+        <svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.2A8.6 8.6 0 0 1 9.8 3.5a8.6 8.6 0 1 0 10.7 10.7Z"/></svg>
+      </button>
+
+      <button class="icon-btn nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-list" aria-label="Open menu">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </nav>
+  </div>
+</header>

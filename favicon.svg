@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <title>Adinkrahene</title>
+  <rect width="100" height="100" fill="#0B120E"/>
+  <g fill="none" stroke="#E4B33F" stroke-width="6.5">
+    <circle cx="50" cy="50" r="37.5"/>
+    <circle cx="50" cy="50" r="23"/>
+  </g>
+  <circle cx="50" cy="50" r="8.5" fill="#E4B33F"/>
+</svg>

@@ -1,0 +1,56 @@
+---
+layout: default
+---
+
+<section class="page-head">
+  <div class="shell page-head__grid">
+    <div>
+      <h1 class="page-head__title rise d1">{{ page.title }}</h1>
+      {%- if page.lede %}<p class="page-head__lede rise d2">{{ page.lede }}</p>{%- endif %}
+    </div>
+    <figure class="page-head__sigil rise d2">
+      {% include glyph.html name="sankofa" class="sigil__art glyph--round draw" label="Sankofa" %}
+      <figcaption>
+        <p class="sigil__name">Sankofa</p>
+        <p class="sigil__gloss">“Go back and fetch it.” There is no shame in returning for what you left behind.</p>
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
+<div class="shell">
+  {%- assign tags = site.tags | sort %}
+
+  {%- if tags.size == 0 %}
+  <div class="empty">
+    <p class="empty__title">Nothing in the archive yet.</p>
+    <p class="empty__text">Posts will be grouped here by tag once there are some. <a href="{{ '/' | relative_url }}">Back to the front page</a>.</p>
+  </div>
+  {%- else %}
+
+  <nav class="tagbar" aria-label="Tags">
+    {%- for tag in tags %}
+    <a href="#{{ tag[0] | cgi_escape }}">{{ tag[0] }} <span class="n">{{ tag[1] | size }}</span></a>
+    {%- endfor %}
+  </nav>
+
+  {%- for tag in tags %}
+  <section class="tag-group">
+    <header class="tag-group__head" id="{{ tag[0] | cgi_escape }}">
+      <h2 class="tag-group__name">{{ tag[0] }}</h2>
+      <p class="tag-group__n">{{ tag[1] | size }} {% if tag[1].size == 1 %}post{% else %}posts{% endif %}</p>
+    </header>
+    <ul class="tag-list">
+      {%- for post in tag[1] %}
+      <li>
+        <a href="{{ post.url | relative_url }}">
+          <span class="t">{{ post.title }}</span>
+          <time class="d" datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date | date: "%Y.%m.%d" }}</time>
+        </a>
+      </li>
+      {%- endfor %}
+    </ul>
+  </section>
+  {%- endfor %}
+  {%- endif %}
+</div>

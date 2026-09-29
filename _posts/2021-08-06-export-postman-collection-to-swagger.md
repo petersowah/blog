@@ -1,6 +1,8 @@
 ---
 layout: post
+published: false
 title:  "Export Postman Collection To Swagger"
+description: "Turning a Postman collection into OpenAPI/Swagger documentation your team can actually read, without rewriting every endpoint by hand."
 date: 2021-08-06
 tags: [api, laravel, postman, swagger]
 ---

@@ -1,24 +1,6 @@
-<!-- Twitter cards -->
-<meta name="twitter:site"    content="@petersowah_">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@petersowah_">
 <meta name="twitter:creator" content="@petersowah_">
-
-{% if page.title %}
-<meta name="twitter:title"   content="{{ page.title }}">
-{% else %}
-<meta name="twitter:title"   content="{{ site.title }}">
-{% endif %}
-
-{% if page.description %}
-<meta name="twitter:description" content="{{ page.description }}">
-{% else %}
-<meta name="twitter:description" content="{{ site.description }}">
-{% endif %}
-
-{% if page.feature_image %}
-<meta name="twitter:card"  content="summary_large_image">
-<meta name="twitter:image" content="{{ site.url }}{{ page.feature_image }}">
-{% else %}
-<meta name="twitter:card"  content="summary">
-<meta name="twitter:image" content="{{ site.title_image }}">
-{% endif %}
-<!-- end of Twitter cards -->
+<meta name="twitter:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }} — {{ site.tagline }}{% endif %}">
+<meta name="twitter:description" content="{{ page.description | default: site.description | strip_html | normalize_whitespace | truncate: 200 | escape }}">
+<meta name="twitter:image" content="{{ page.feature_image | default: site.data.author.image | absolute_url }}">

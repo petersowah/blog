@@ -1,6 +1,8 @@
 ---
 layout: post
+published: false
 title:  "Black Panther REST API with Lumen and Cloudinary"
+description: "Building a REST API for Black Panther characters with Lumen and Cloudinary — routing, migrations, models and image uploads, end to end."
 date: 2018-02-23
 tags: [lumen, php, api, cloudinary]
 ---

@@ -2,50 +2,83 @@
 layout: default
 ---
 
-<main class="main-content fadeInDown delay_075s">
+<div class="progress" id="progress" aria-hidden="true"></div>
 
-  <article class="post">
-    <header class="post-header">
-      <time class="post-date" datetime="{{ page.date | date: "%Y-%m-%d" }}">{{page.date | date: "%B %-d, %Y" }}</time>
-      <h1 class="post-title">{{page.title}}</h1>
-      <div class="post-meta">
-        By <span class="post-author">{{ site.data.author.name }}</span>{% if page.tags.size > 0 %}<span class="post-tags"> in {% for tag in page.tags %}<a href="{{ site.baseurl }}/tags/#{{ tag | cgi_escape }}" rel="tag">{{ tag }}</a>{% unless forloop.last %}, {% endunless %}{% endfor %}</span>{% endif %}
-      </div><!-- .post-meta -->
-      {% if page.feature_image and page.feature_image != "" %}
-      <figure class="post-thumbnail image-card width-wide">
+<article class="article">
+  <div class="shell">
+    <div class="article__head">
+      <a class="back-link" href="{{ '/' | relative_url }}"><span aria-hidden="true">&larr;</span> All writing</a>
+
+      <p class="article__meta">
+        <time datetime="{{ page.date | date: '%Y-%m-%d' }}">{{ page.date | date: "%d %B %Y" }}</time>
+        <span class="sep" aria-hidden="true">/</span>
+        <span>{{ page.content | number_of_words | divided_by: 220 | plus: 1 }} min read</span>
+        {%- if page.tags.size > 0 %}
+        <span class="sep" aria-hidden="true">/</span>
+        {% for tag in page.tags %}<a href="{{ '/archive/' | relative_url }}#{{ tag | cgi_escape }}" rel="tag">{{ tag }}</a>{% unless forloop.last %}<span class="sep" aria-hidden="true">·</span>{% endunless %}{% endfor %}
+        {%- endif %}
+      </p>
+
+      <h1 class="article__title">{{ page.title }}</h1>
+
+      {%- if page.description %}
+      <p class="article__standfirst">{{ page.description }}</p>
+      {%- endif %}
+
+      {%- if page.feature_image and page.feature_image != "" %}
+      <figure class="article__figure bleed">
         <img src="{{ page.feature_image | relative_url }}" alt="{{ page.title }}">
-      </figure><!-- .post-thumbnail -->
-      {% endif %}
-    </header><!-- .post-header -->
-    <div class="post-content">
-      {{content}}
-    </div><!-- .post-content -->
-    <div class="post-share">
-      <span>Share:</span>
-      <a target="_blank"
-        href="https://twitter.com/intent/tweet?text={{ page.title | uri_escape }}&amp;url={{ page.url | absolute_url }}" rel="noopener">Twitter</a>
-      <a target="_blank"
-        href="https://www.facebook.com/sharer/sharer.php?u={{ page.url | absolute_url }}&amp;t={{ page.title | uri_escape }}" rel="noopener">Facebook</a>
-    </div><!-- .share-post -->
-    <div class="author-box">
-      {% if site.data.author.image and site.data.author.image != "" %}
-      <div class="author-avatar" style="background-image: url('{{ site.data.author.image }}')"><span class="screen-reader-text">{{ site.data.author.name }}'s Picture</span></div>
-      {% endif %}
-      <div class="author-details">
-        <h2 class="author-title">About {{ site.data.author.name }}</h2>
-        <div class="author-bio">{{ site.data.author.bio | markdownify }}</div>
-        {% if site.data.author.location and site.data.author.location != "" %}
-        <span class="author-location">{{ site.data.author.location}}</span>
-        {% endif %}
-        {% if site.data.author.url and site.data.author.url != "" %}
-        <span class="author-website"><a href="{{ site.data.author.url }}" target="_blank" rel="noopener">{{ site.data.author.url }}</a></span>
-        {% endif %}
-      </div><!-- .author-details -->
-    </div><!-- .author-box -->
-  </article><!-- .post -->
+      </figure>
+      {%- endif %}
+    </div>
 
-  {% if site.disqus and site.disqus != "" %}
+    <div class="prose">
+      {{ content }}
+    </div>
+
+    <div class="article__foot">
+      <div class="share">
+        <span class="share__label">Share this</span>
+        <a target="_blank" rel="noopener" href="https://twitter.com/intent/tweet?text={{ page.title | uri_escape }}&amp;url={{ page.url | absolute_url }}">X</a>
+        <a target="_blank" rel="noopener" href="https://www.linkedin.com/sharing/share-offsite/?url={{ page.url | absolute_url }}">LinkedIn</a>
+        <button class="btn btn--ghost" type="button" id="copy-link" data-url="{{ page.url | absolute_url }}">Copy link</button>
+      </div>
+
+      <div class="bio">
+        {%- if site.data.author.image and site.data.author.image != "" %}
+        <div class="bio__avatar" style="background-image: url('{{ site.data.author.image | relative_url }}')" role="img" aria-label="{{ site.data.author.name }}"></div>
+        {%- endif %}
+        <div>
+          <h2 class="bio__name">{{ site.data.author.name }}</h2>
+          <div class="bio__text"><p>{{ site.data.author.bio }}</p></div>
+          <p class="bio__links">
+            <a href="{{ '/about/' | relative_url }}">More about me</a>
+            <a href="https://github.com/petersowah" target="_blank" rel="noopener">GitHub</a>
+            <a href="https://twitter.com/petersowah_" target="_blank" rel="noopener">X</a>
+          </p>
+        </div>
+      </div>
+
+      {%- if page.previous or page.next %}
+      <nav class="postnav" aria-label="More posts">
+        {%- if page.previous %}
+        <a class="prev" href="{{ page.previous.url | relative_url }}">
+          <span class="dir">&larr; Previous</span>
+          <span class="t">{{ page.previous.title }}</span>
+        </a>
+        {%- else %}<span></span>{%- endif %}
+        {%- if page.next %}
+        <a class="next" href="{{ page.next.url | relative_url }}">
+          <span class="dir">Next &rarr;</span>
+          <span class="t">{{ page.next.title }}</span>
+        </a>
+        {%- else %}<span></span>{%- endif %}
+      </nav>
+      {%- endif %}
+    </div>
+
+    {%- if site.disqus and site.disqus != "" %}
     {% include disqus.html %}
-  {% endif %}
-
-</main><!-- .main-content -->
+    {%- endif %}
+  </div>
+</article>
